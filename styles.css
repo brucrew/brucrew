@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+    background: #336600;
+    margin: 0 auto;
+}
+
+header {
+    background: #000;
+    height: 125px;
+    margin: 0;
+    padding: 0;
+}
+
+#login {
+    background: #FAFAFA;
+    margin: 10% auto;
+    width: 60%;
+}
+
+#login_table {
+    margin: auto;
+}
+
+#table_header {
+    text-align: center;
+}
+
+.login_info {
+    text-align: right;
+}
+
+#submit {
+    text-align: center;
+}
