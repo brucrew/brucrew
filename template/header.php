@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../bootstrapsource/favicon.ico">
 
-    <title>Theme Template for Bootstrap</title>
+    <title>BruCrew</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrapsource/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -56,11 +56,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-image: -webkit-linear-gradient(top,#f8f8f8 0,#f8f8f8 100%);">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.php">Home<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">My Projects</a></li>
+            <li><a href="my_projects.php">My Projects</a></li>
             <li><a href="#">Add A Project</a></li>
           </ul>
         </li>
