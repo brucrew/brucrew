@@ -32,7 +32,7 @@ class controller_auth
   <div style='float: right;'>
 <form method='POST'><input name='logout' type='submit' value='Logout'>
 </form></div>
-</div><br>
+</div><br><br>
 eos;
 			return;
 		}
@@ -63,7 +63,11 @@ eos;
   <div style='float: right;'>
 <form method='POST'><input name='logout' type='submit' value='Logout'>
 </form></div>
+<<<<<<< HEAD
 </div><br>
+=======
+</div><br><br>
+>>>>>>> 89a2534eec7ce6b8f83445c4fcf15ff6db2bf9a8
 eos;
 			return;
 		}
@@ -109,7 +113,11 @@ eos;
   <div style='float: right;'>
 <form method='POST'><input name='logout' type='submit' value='Logout'>
 </form></div>
+<<<<<<< HEAD
 </div><br>
+=======
+</div><br><br>
+>>>>>>> 89a2534eec7ce6b8f83445c4fcf15ff6db2bf9a8
 eos;
 			}
 			return;
@@ -140,7 +148,11 @@ eos;
   <div style='float: right;'>
 <form method='POST'><input name='logout' type='submit' value='Logout'>
 </form></div>
+<<<<<<< HEAD
 </div><br>
+=======
+</div><br><br>
+>>>>>>> 89a2534eec7ce6b8f83445c4fcf15ff6db2bf9a8
 eos;
 			return;
 		}
