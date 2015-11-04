@@ -73,11 +73,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="my_projects.php">My Projects</a></li>
-<<<<<<< HEAD
             <li><a href="add_projects.php">Add A Project</a></li>
-=======
-            <li><a href="#">Add A Project</a></li>
->>>>>>> 89a2534eec7ce6b8f83445c4fcf15ff6db2bf9a8
           </ul>
         </li>
 	<li><a href="#">My Hours</a></li>
@@ -106,8 +102,4 @@
 </nav>
 
 
-<<<<<<< HEAD
-    <div class="container theme-showcase" role="main" style="background-image: -webkit-linear-gradient(top,#ffffff 0,#ffffff 100%); min-height: 600px;">
-=======
 <div class="container theme-showcase" role="main" style="background-image: -webkit-linear-gradient(top,#ffffff 0,#ffffff 100%); min-height: 600px;">
->>>>>>> 89a2534eec7ce6b8f83445c4fcf15ff6db2bf9a8
