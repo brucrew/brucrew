@@ -21,7 +21,7 @@ $a->do_auth($username, $password);
 <?php
 if($_SESSION['valid'] == TRUE)
 {
-Start Main Content Here
+//Start Main Content Here
 $add_project = $m->get_add_projects();
 echo $r->view_add_project($add_project);
 }
