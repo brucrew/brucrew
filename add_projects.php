@@ -22,8 +22,9 @@ $a->do_auth($username, $password);
 if($_SESSION['valid'] == TRUE)
 {
 //Start Main Content Here
-$add_project = $m->get_add_projects();
-echo $r->view_add_project($add_project);
+echo "<center>";
+echo $r->view_add_projects();
+echo "</center>";
 }
 include_once('template/footer.php');
 ?>

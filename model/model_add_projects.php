@@ -24,12 +24,34 @@ class model_page {
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
 	
-	//public function get_my_projects()
-	//{
-	//$q = $this->db->query( "SELECT o.ID, CONCAT(c.FirstName, ' ', c.LastName) as Client, o.Description, o.Location, a.Note, o.IsComplete, o.CompleteDate FROM Assignments as a join Orders as o on a.OrderID = o.ID join Customers as c on o.CustomerID = c.ID WHERE a.EmployeeID = {$_SESSION['UserID']} ORDER BY ID DESC;" );
-	//return $q->fetchAll( PDO::FETCH_ASSOC );
-	//}
-	
+	public function user_add_order($RequestID, $Name, $DateReceived, $Location, $Description)
+	{
+	try {
+	$q1 = $this->db->query( "SELECT ID FROM Customers WHERE CONCAT(FirstName, ' ', LastName) LIKE '{$Name}'" );
+	$results = $q1->fetchAll( PDO::FETCH_ASSOC );
+	foreach( $results as $result )
+	{
+		$CustomerID = $result['ID'];
+	}
+	$q = $this->db->prepare( "INSERT INTO Orders (CustomerID, RequestID, DateReceived, Location, Description) VALUES (:CustomerID, :RequestID, :DateReceived, :Location, :Description)" );
+
+		$q->bindParam( ':CustomerID', $CustomerID);
+		$q->bindParam( ':RequestID', $RequestID);
+		$q->bindParam( ':DateReceived', $DateReceived);
+		$q->bindParam( ':Location', $Location);
+		$q->bindParam( ':Description', $Description);
+
+		$q->execute();	//Trap error here. //
+	}
+	catch (PDOException $e) {
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=useraddcustomer.php? message=addclientfirst">';
+		exit();
+	}
+	$q2 = $this->db->prepare( "UPDATE Requests SET Transferred = 1 WHERE ID = '{$RequestID}'" );
+		//$q2->bindParam( ':RequestID', $RequestID );
+
+		$q2->execute(); //Trap error here. //
+	}
 }
 
 

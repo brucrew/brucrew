@@ -1,7 +1,7 @@
 <?php
 class view_page {
 
-public function view_add_projects($project)
+public function view_add_projects()
 {
 	echo <<<eos
 
