@@ -145,7 +145,7 @@ public function view_expenses_by_project( $expenses )
 
 public function view_client_payments_by_project( $payments )
 {
-	echo "<table class='table table-hover table-bordered table-striped'><th style='white-space: nowrap;'>Reported By</th><th style='white-space: nowrap;'>Date</th><th style='white-space: nowrap;'>Amount</th><th style='white-space: nowrap;'>Payment Type</th><th style='white-space: nowrap;'>Delete Payment</th>";
+	echo "<table class='table table-hover table-bordered table-striped'><th style='white-space: nowrap;'>Reported By</th><th style='white-space: nowrap;'>Date</th><th style='white-space: nowrap;'>Amount</th><th style='white-space: nowrap;'>Description</th><th style='white-space: nowrap;'>Payment Type</th><th style='white-space: nowrap;'>Delete Payment</th>";
 	foreach( $payments as $payment )
 	{
 		echo "<tr>";
@@ -158,10 +158,10 @@ public function view_client_payments_by_project( $payments )
 			}
 			else
 			{
-				echo ("<td style='vertical-align: top;'><a href='clientpayment.php?id=$paymentID'>$value</a></td>");
+				echo ("<td style='vertical-align: top;'><a href='client_payment.php?id=$paymentID'>$value</a></td>");
 			}
 		}
-		echo "<td style='vertical-align: top;'><strong><a href='clientpayment.php?id=$paymentID&action=delete'><font color='red'>Delete Payment</a></font></strong></td>";
+		echo "<td style='vertical-align: top;'><strong><a href='client_payment.php?id=$paymentID&action=delete'><font color='red'>Delete Payment</a></font></strong></td>";
 		echo "</tr>";
 		
 	}

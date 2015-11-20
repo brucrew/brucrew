@@ -73,16 +73,16 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="my_projects.php">My Projects</a></li>
-            <li><a href="#">Add A Project</a></li>
+            <li><a href="add_projects.php">Add A Project</a></li>
           </ul>
         </li>
-	<li><a href="#">My Hours</a></li>
+	<li><a href="hours.php">My Hours</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">All Clients</a></li>
+            <li><a href="clients.php">All Clients</a></li>
             <li><a href="#">My Regular Clients</a></li>
-	    <li><a href="#">Add New Client</a></li>
+	    <li><a href="addclient.php">Add New Client</a></li>
           </ul>
         </li>
       </ul>

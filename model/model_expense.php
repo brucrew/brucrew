@@ -24,6 +24,24 @@ class model_page {
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
 	
+	public function get_expense_information( $id )
+	{
+	$q = $this->db->query( "SELECT ID, OrderID, EmployeeID, Date, Amount, Description, Mulch, BruCrewCard FROM Expenses WHERE ID = {$id} LIMIT 1" );
+	return $q->fetchAll( PDO::FETCH_ASSOC );
+	}
+
+	public function updateexpense( $information )
+	{
+	if ($information['Date'] != "" && $information['TimeIn'] != "" && $information['TimeOut'] != "" && $information['Hours'] != "")
+	{
+		print_r($information);
+		//update hour via 'Date', 'TimeIn', 'TimeOut', 'Hours', 'Note'
+	}
+	else
+	{
+		echo "<strong><font color='red'>Please Fill Out All Fields</font></strong><br><br>";
+	}
+	}
 }
 
 

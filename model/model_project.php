@@ -62,7 +62,7 @@ class model_page {
 
 	public function get_client_payments_by_project($id)
 	{
-	$q = $this->db->query( "SELECT p.ID, CONCAT(FirstName, ' ', LastName) as Name, Date as Date, Amount as Amount, Type as PaymentType FROM PaymentsReceived as p join Employees as e on p.EmployeeID = e.ID WHERE OrderID = {$id}" );
+	$q = $this->db->query( "SELECT p.ID, CONCAT(FirstName, ' ', LastName) as Name, Date as Date, Amount as Amount, Description as Description, Type as PaymentType FROM PaymentsReceived as p join Employees as e on p.EmployeeID = e.ID WHERE OrderID = {$id}" );
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
 	
