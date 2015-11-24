@@ -24,36 +24,18 @@ class model_page {
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
 	
-	public function get_hour_information( $id )
+	public function get_client_payment_information( $id )
 	{
-	$q = $this->db->query( "SELECT ID, OrderID, EmployeeID, Date, TimeIn, TimeOut, Hours, Note, Paid FROM Hours WHERE ID = {$id} LIMIT 1" );
+	$q = $this->db->query( "SELECT ID, OrderID, EmployeeID, Date, Amount, Description, Type, Deposited FROM PaymentsReceived WHERE ID = {$id} LIMIT 1" );
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
 
-	public function updatehour( $information )
+	public function updateclientpayment( $information )
 	{
 	if ($information['Date'] != "" && $information['TimeIn'] != "" && $information['TimeOut'] != "" && $information['Hours'] != "")
 	{
+		print_r($information);
 		//update hour via 'Date', 'TimeIn', 'TimeOut', 'Hours', 'Note'
-		$ID = $_GET['id'];
-		$Date = $information['Date'];
-		$TimeIn = $information['TimeIn'];
-		$TimeOut = $information['TimeOut'];
-		$Hours = $information['Hours'];
-		$Note = $information['Note'];
-		$OrderID = $information['OrderID'];
-		$q = $this->db->prepare( "UPDATE Hours SET Date = :Date, TimeIn = :TimeIn, TimeOut = :TimeOut, Hours = :Hours, Note = :Note WHERE ID = :ID" );
-
-		$q->bindParam( ':ID', $ID );
-		$q->bindParam( ':Date', $Date );
-		$q->bindParam( ':TimeIn', $TimeIn );
-		$q->bindParam( ':TimeOut', $TimeOut );
-		$q->bindParam( ':Hours', $Hours );
-		$q->bindParam( ':Note', $Note );
-		
-		$q->execute(); //Trap error here. //
-
-		echo "<META http-equiv='refresh' content='0;URL=project.php?id={$OrderID}'>";
 	}
 	else
 	{

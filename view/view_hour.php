@@ -4,10 +4,10 @@ class view_page {
 	{
 		foreach( $hour_entry as $hour )
 		{
-			if($hour['Paid'] == 1)
+			if($hour['Paid'] != 1 && $hour['EmployeeID'] == $_SESSION['UserID'])
 			{
 			echo <<<eos
-			<form name='edithour' action='?id={$hour['ID']}&action=updatehour' method='POST'><input type='hidden' name='EmployeeID' value='{$_SESSION['UserID']}'>
+			<form name='edithour' action='?id={$hour['ID']}&action=updatehour' method='POST'><input type='hidden' name='EmployeeID' value='{$_SESSION['UserID']}'><input type='hidden' name='OrderID' value='{$hour['OrderID']}'>
 			<div class="input-group">
 				<b>Date: (MM/DD/YYYY): </b><input type="text" class="form-control datepick" name="Date" id="date_2" value="{$hour['Date']}">
 			</div>
@@ -21,7 +21,7 @@ class view_page {
 				<b>Total Hours: </b><input type="number" step="any" class="form-control" name="Hours" value="{$hour['Hours']}">
 			</div>
 			<div class="input-group">
-				<b>Description: </b><textarea class="form-control" name="Description" value="{$hour['Note']}"></textarea>
+				<b>Description: </b><textarea class="form-control" name="Note">{$hour['Note']}</textarea>
 			</div>
 			<div class="input-group">
 				<br><input type='submit' class="form-control" value='Update Hours'></submit>
@@ -31,7 +31,7 @@ eos;
 			}
 			else
 			{
-				echo "This hour entry has been marked as paid and cannot be edited.";
+				echo "This hour entry has either been marked as paid or does not belong to you and and cannot be edited.";
 			}
 		}
 	}
