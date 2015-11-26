@@ -23,36 +23,16 @@ class model_page {
 	$q = $this->db->query( "SELECT ID, Email, FirstName, LastName, Phone, Address, City, State, Zip FROM Employees WHERE ID = '$user'" );
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
-	
-	public function user_add_order($RequestID, $Name, $DateReceived, $Location, $Description)
+
+	public function user_add_order( $information )
 	{
-	try {
-	$q1 = $this->db->query( "SELECT ID FROM Customers WHERE CONCAT(FirstName, ' ', LastName) LIKE '{$Name}'" );
-	$results = $q1->fetchAll( PDO::FETCH_ASSOC );
-	foreach( $results as $result )
-	{
-		$CustomerID = $result['ID'];
-	}
-	$q = $this->db->prepare( "INSERT INTO Orders (CustomerID, RequestID, DateReceived, Location, Description) VALUES (:CustomerID, :RequestID, :DateReceived, :Location, :Description)" );
-
-		$q->bindParam( ':CustomerID', $CustomerID);
-		$q->bindParam( ':RequestID', $RequestID);
-		$q->bindParam( ':DateReceived', $DateReceived);
-		$q->bindParam( ':Location', $Location);
-		$q->bindParam( ':Description', $Description);
-
-		$q->execute();	//Trap error here. //
-	}
-	catch (PDOException $e) {
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=useraddcustomer.php? message=addclientfirst">';
-		exit();
-	}
-	$q2 = $this->db->prepare( "UPDATE Requests SET Transferred = 1 WHERE ID = '{$RequestID}'" );
-		//$q2->bindParam( ':RequestID', $RequestID );
-
-		$q2->execute(); //Trap error here. //
+		if ($information['Name'] != "" && $information['Location'] != "" && $information['Description'] != "" && $information['DateReceived'] != "")
+		{
+			print_r($information);
+		} else {
+			echo "No data in POST super global variable";
+		}
 	}
 }
-
 
 ?>
