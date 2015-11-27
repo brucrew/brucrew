@@ -29,7 +29,12 @@ class model_page {
 		$q = $this->db->query( "SELECT o.ID, CONCAT(c.FirstName, ' ', c.LastName) as Client, o.Description, o.Location, a.Note, o.IsComplete, o.CompleteDate FROM Assignments as a join Orders as o on a.OrderID = o.ID join Customers as c on o.CustomerID = c.ID WHERE a.EmployeeID = {$_SESSION['UserID']} ORDER BY ID DESC;" );
 		return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
-}
 
+	public function get_hours_by_project()
+	{
+		$q = $this->db->query( "SELECT h.ID, h.OrderID, CONCAT(FirstName, ' ', LastName) as Name, Date, Hours, Note, Paid, EmployeeID FROM Hours as h JOIN Employees as e on h.EmployeeID = e.ID WHERE h.OrderID = {$id} AND h.EmployeeID != 54 ORDER BY h.ID Asc LIMIT 200" );
+		return $q->fetchAll( PDO::FETCH_ASSOC );
+	}
+}
 
 ?>
