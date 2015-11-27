@@ -24,7 +24,7 @@ $a->do_auth( $username, $password );
 		//Start Main Content Here
 		echo <<<eos
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-6">
 					<div class="row">
 						<div class="panel panel-info">
 							<div class="panel-heading">
