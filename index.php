@@ -18,10 +18,28 @@ include_once( 'template/header.php' );
 $a->do_auth( $username, $password );
 ?>
 <?php
-if($_SESSION['valid'] == TRUE)
-{
-//Start Main Content Here
-
-}
+	if($_SESSION['valid'] == TRUE)
+	{
+		$my_projects = $m->get_my_projects();
+		//Start Main Content Here
+		echo <<<eos
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">Projects</h3>
+							</div>
+							<div class="panel-body">
+eos;
+								$r->view_my_projects( $my_projects );
+		echo <<<eos
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+eos;
+	}
 include_once( 'template/footer.php' );
 ?>

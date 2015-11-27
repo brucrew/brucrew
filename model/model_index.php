@@ -23,7 +23,12 @@ class model_page {
 	$q = $this->db->query( "SELECT ID, Email, FirstName, LastName, Phone, Address, City, State, Zip FROM Employees WHERE ID = '$user'" );
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
-	
+
+	public function get_my_projects()
+	{
+		$q = $this->db->query( "SELECT o.ID, CONCAT(c.FirstName, ' ', c.LastName) as Client, o.Description, o.Location, a.Note, o.IsComplete, o.CompleteDate FROM Assignments as a join Orders as o on a.OrderID = o.ID join Customers as c on o.CustomerID = c.ID WHERE a.EmployeeID = {$_SESSION['UserID']} ORDER BY ID DESC;" );
+		return $q->fetchAll( PDO::FETCH_ASSOC );
+	}
 }
 
 
