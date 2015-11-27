@@ -21,7 +21,7 @@ $a->do_auth( $username, $password );
 	if($_SESSION['valid'] == TRUE)
 	{
 		$my_projects = $m->get_my_projects();
-		$project_hours = $m->get_my_hours();
+		$project_hours = $m->get_hours_by_project();
 		//Start Main Content Here
 		echo <<<eos
 			<div class="row">
@@ -47,7 +47,7 @@ eos;
 							</div>
 							<div class="panel-body">
 eos;
-								$r->view_my_recent_hours( $project_hours );
+								$r->view_hours_by_project( $project_hours );
 		echo <<<eos
 							</div>
 						</div>
