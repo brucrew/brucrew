@@ -12,25 +12,25 @@ class view_page {
 			{
 				if($key == "Client")
 				{
-					echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='project.php?id={$project['ID']}'>$value</a></td>");
+					echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='project.php?id={$id}'>$value</a></td>");
 				}
 				if($key == "IsComplete")
 				{
 					if($value == "0")
 					{
-						echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='project.php?id={$project['ID']}'>No</a></td>");
+						echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='project.php?id={$id}'>No</a></td>");
 					}
 				}
 				if($key == "CompleteDate")
 				{
 					if($value != "0000-00-00")
 					{
-						echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='project.php?id={$project['ID']}'>$value</a></td>");
+						echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='project.php?id={$id}'>$value</a></td>");
 					}
 				}
 				if($key == "Description" || $key == "Location" || $key == "Note")
 				{
-					echo ("<td style='vertical-align: top;'><a href='project.php?id={$project['ID']}'>$value</a></td>");
+					echo ("<td style='vertical-align: top;'><a href='project.php?id={$id}'>$value</a></td>");
 				}
 			}
 			echo "</tr>";
@@ -38,35 +38,35 @@ class view_page {
 		echo "</table>";
 	}
 
-	public function view_hours_by_project( $hours )
+	public function view_my_hours( $hours )
 	{
-		echo "<table class='table table-hover table-bordered table-striped'><th style='white-space: nowrap;'>Name</th><th style='white-space: nowrap;'>Date</th><th style='white-space: nowrap;'>Hours</th><th style='white-space: nowrap;'>Note</th><th style='white-space: nowrap;'>Paid</th><th style='white-space: nowrap;'>Delete Hour</th>";
+		echo "<table class='table table-bordered table-striped'><th style='white-space: nowrap;'>Order ID</th><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Project Description</th><th style='white-space: nowrap;'>Date of Work</th><th style='white-space: nowrap;'>Hours</th><th style='white-space: nowrap;'>Paid</th><th style='white-space: nowrap;'>Amount</th>";
 		foreach( $hours as $hour )
 		{
+			$id = $hour['ID'];
 			echo "<tr>";
-			$hourID = $hour['ID'];
 			foreach($hour as $key => $value)
 			{
+				if($key == "OrderID" || $key == "Client" || $key == "Date" || $key == "Hours" || $key == "Amount")
+				{
+					echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='hour.php?id={$id}'>$value</a></td>");
+				}
+				if($key == "Description")
+				{
+					echo ("<td style='vertical-align: top;'><a href='hour.php?id={$id}'>$value</a></td>");
+				}
 				if($key == "Paid")
 				{
 					if($value == '1')
 					{
-						echo "<td style='vertical-align: top;'><strong>Yes</strong></td>";
-					} else if($value == '0') {
-						echo "<td style='vertical-align: top;'><strong>No</strong></td>";
+						echo "<td style='white-space: nowrap; vertical-align: top;'><strong>Yes</strong></td>";
+					}
+					else if($value == '0')
+					{
+						echo "<td style='white-space: nowrap; vertical-align: top;'><strong>No</strong></td>";
 					}
 				}
-				if($key == "OrderID")
-				{
-					echo "";
-				}
-				if($key == "Name" || $key == "Date" || $key == "Hours" || $key == "Note")
-				{
-					echo ("<td style='vertical-align: top;'><a href='hour.php?id={$hourID}'>$value</td>");
-				}
 			}
-			$i++;
-			echo "<td style='vertical-align: top;'><strong><a href='hour.php?id={$hourID}&action=delete'><font color='red'>Delete Hour</a></font></strong></td>";
 			echo "</tr>";
 		}
 		echo "</table>";
