@@ -20,8 +20,12 @@ $a->do_auth( $username, $password );
 <?php
 	if($_SESSION['valid'] == TRUE)
 	{
+		$EmployeeID = $_SESSION['UserID'];
 		$my_projects = $m->get_my_projects();
-		$project_hours = $m->get_hours_by_project();
+		$my_hours = $m->get_my_hours();
+		echo "Employee ID = " . $EmployeeID;
+		echo "<br>";
+		echo $my_hours;
 		//Start Main Content Here
 		echo <<<eos
 			<div class="row">
@@ -41,13 +45,13 @@ eos;
 				</div>
 				<div class="col-md-6">
 					<div class="row">
-						<div class="panel panel-info">
+						<div class="panel panel-success">
 							<div class="panel-heading">
 								<h3 class="panel-title">Recent Hours</h3>
 							</div>
 							<div class="panel-body">
 eos;
-								$r->view_hours_by_project( $project_hours );
+								$r->view_my_hours( $project_hours );
 		echo <<<eos
 							</div>
 						</div>
