@@ -23,9 +23,6 @@ $a->do_auth( $username, $password );
 		$EmployeeID = $_SESSION['UserID'];
 		$my_projects = $m->get_my_projects();
 		$my_hours = $m->get_my_hours();
-		echo "Employee ID = " . $EmployeeID;
-		echo "<br>";
-		echo $my_hours;
 		//Start Main Content Here
 		echo <<<eos
 			<div class="row">
@@ -36,22 +33,28 @@ $a->do_auth( $username, $password );
 								<h3 class="panel-title">Projects</h3>
 							</div>
 							<div class="panel-body">
+								<div class="table-responsive">
 eos;
-								$r->view_my_projects( $my_projects );
+									$r->view_my_projects( $my_projects );
 		echo <<<eos
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<h3 class="panel-title">Recent Hours</h3>
-						</div>
-						<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h3 class="panel-title">Recent Hours</h3>
+							</div>
+							<div class="panel-body">
+								<div class="table-responsive">
 eos;
-							$r->view_my_hours( $my_hours );
-	echo <<<eos
+									$r->view_my_hours( $my_hours );
+		echo <<<eos
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

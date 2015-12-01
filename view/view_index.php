@@ -3,7 +3,7 @@ class view_page {
 
 	public function view_my_projects( $projects )
 	{
-		echo "<table class='table table-hover table-bordered table-striped'><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Description</th><th style='white-space: nowrap;'>Location</th><th style='white-space: nowrap;'>My Job</th><th style='white-space: nowrap;'>Completion</th>";
+		echo "<table class='table table-hover table-bordered table-striped table-condensed'><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Description</th><th style='white-space: nowrap;'>Location</th><th style='white-space: nowrap;'>My Job</th><th style='white-space: nowrap;'>Completion</th>";
 		foreach( $projects as $project )
 		{
 			$id= $project['ID'];
@@ -40,7 +40,7 @@ class view_page {
 
 	public function view_my_hours( $hours )
 	{
-		echo "<table class='table table-bordered table-striped'><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Project Description</th><th style='white-space: nowrap;'>Date of Work</th><th style='white-space: nowrap;'>Hours</th><th style='white-space: nowrap;'>Paid</th><th style='white-space: nowrap;'>Amount</th>";
+		echo "<table class='table table-bordered table-striped table-condensed'><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Project Description</th><th style='white-space: nowrap;'>Date of Work</th><th style='white-space: nowrap;'>Hours</th><th style='white-space: nowrap;'>Paid</th><th style='white-space: nowrap;'>Amount</th>";
 		foreach( $hours as $hour )
 		{
 			$id = $hour['ID'];
