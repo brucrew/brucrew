@@ -51,7 +51,7 @@ eos;
 							</div>
 							<div class="panel-body">
 eos;
-								$r->view_my_hours( $project_hours );
+								$r->view_my_hours( $my_hours );
 		echo <<<eos
 							</div>
 						</div>
