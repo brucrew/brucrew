@@ -40,14 +40,14 @@ class view_page {
 
 	public function view_my_hours( $hours )
 	{
-		echo "<table class='table table-bordered table-striped'><th style='white-space: nowrap;'>Order ID</th><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Project Description</th><th style='white-space: nowrap;'>Date of Work</th><th style='white-space: nowrap;'>Hours</th><th style='white-space: nowrap;'>Paid</th><th style='white-space: nowrap;'>Amount</th>";
+		echo "<table class='table table-bordered table-striped'><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Project Description</th><th style='white-space: nowrap;'>Date of Work</th><th style='white-space: nowrap;'>Hours</th><th style='white-space: nowrap;'>Paid</th><th style='white-space: nowrap;'>Amount</th>";
 		foreach( $hours as $hour )
 		{
 			$id = $hour['ID'];
 			echo "<tr>";
 			foreach($hour as $key => $value)
 			{
-				if($key == "OrderID" || $key == "Client" || $key == "Date" || $key == "Hours" || $key == "Amount")
+				if($key == "Client" || $key == "Date" || $key == "Hours" || $key == "Amount")
 				{
 					echo ("<td style='white-space: nowrap; vertical-align: top;'><a href='hour.php?id={$id}'>$value</a></td>");
 				}

@@ -44,16 +44,14 @@ eos;
 					</div>
 				</div>
 				<div class="col-md-6">
-					<div class="row">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">Recent Hours</h3>
-							</div>
-							<div class="panel-body">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Recent Hours</h3>
+						</div>
+						<div class="panel-body">
 eos;
-								$r->view_my_hours( $my_hours );
-		echo <<<eos
-							</div>
+							$r->view_my_hours( $my_hours );
+	echo <<<eos
 						</div>
 					</div>
 				</div>

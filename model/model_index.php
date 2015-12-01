@@ -32,7 +32,7 @@ class model_page {
 
 	public function get_my_hours()
 	{
-		$q = $this->db->query( "SELECT h.ID as ID, o.ID as OrderID, CONCAT(c.FirstName, ' ', c.LastName) as Client, o.Description, h.Date, h.Hours, h.Paid, h.Amount FROM Hours as h JOIN Orders as o on h.OrderID = o.ID JOIN Customers as c on o.CustomerID = c.ID WHERE h.EmployeeID = {$_SESSION['UserID']} ORDER BY ID DESC;" );
+		$q = $this->db->query( "SELECT h.ID as ID, CONCAT(c.FirstName, ' ', c.LastName) as Client, o.Description, h.Date, h.Hours, h.Paid, h.Amount FROM Hours as h JOIN Orders as o on h.OrderID = o.ID JOIN Customers as c on o.CustomerID = c.ID WHERE h.EmployeeID = {$_SESSION['UserID']} ORDER BY ID DESC;" );
 		return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
 }
