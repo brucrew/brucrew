@@ -38,7 +38,7 @@ class view_page {
 		echo "</table>";
 	}
 
-	public function view_my_hours( $hours )
+	public function view_recent_hours( $hours )
 	{
 		echo "<table class='table table-bordered table-striped table-condensed'><th style='white-space: nowrap;'>Client</th><th style='white-space: nowrap;'>Project Description</th><th style='white-space: nowrap;'>Date of Work</th><th style='white-space: nowrap;'>Hours</th><th style='white-space: nowrap;'>Paid</th><th style='white-space: nowrap;'>Amount</th>";
 		foreach( $hours as $hour )

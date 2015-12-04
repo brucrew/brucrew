@@ -22,7 +22,7 @@ $a->do_auth( $username, $password );
 	{
 		$EmployeeID = $_SESSION['UserID'];
 		$my_projects = $m->get_my_projects();
-		$my_hours = $m->get_my_hours();
+		$recent_hours = $m->get_recent_hours();
 		//Start Main Content Here
 		echo <<<eos
 			<div class="row">
@@ -51,7 +51,7 @@ eos;
 							<div class="panel-body">
 								<div class="table-responsive">
 eos;
-									$r->view_my_hours( $my_hours );
+									$r->view_recent_hours( $recent_hours );
 		echo <<<eos
 								</div>
 							</div>
