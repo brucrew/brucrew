@@ -23,17 +23,28 @@ class model_page {
 	$q = $this->db->query( "SELECT ID, Email, FirstName, LastName, Phone, Address, City, State, Zip FROM Employees WHERE ID = '$user'" );
 	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
-
-	public function user_add_order( $information )
+	public function get_my_regular_clients()
 	{
-		if ($information['Name'] != "" && $information['Location'] != "" && $information['Description'] != "" && $information['DateReceived'] != "")
-		{
-			print_r($information);
-		} else {
-			echo "No data in POST super global variable";
-		}
+	$q = $this->db->query( "SELECT r.ID, CONCAT(c.FirstName, ' ', c.LastName) as Client, c.ID as ClientID FROM RegularClients as r LEFT JOIN Customers as c on r.CustomerID = c.ID WHERE r.EmployeeID = {$_SESSION['UserID']} ORDER BY c.LastName Asc" );
+	return $q->fetchAll( PDO::FETCH_ASSOC );
 	}
+	public function delete($var)
+	{
+	$ID = $var['id'];
+	$q = $this->db->prepare( "DELETE FROM RegularClients WHERE ID = :ID" );
+
+
+
+	$q->bindParam( ':ID', $ID );
+		
+	$q->execute(); //Trap error here. //
+	}
+
+
+
+
+
+
 }
-
-
 ?>
+

@@ -19,9 +19,9 @@ include_once('template/header.php');
 $a->do_auth($username, $password);
 ?>
 <?php
-if ($_SESSION['valid'] == TRUE)
+if($_SESSION['valid'] == TRUE)
 {
-	if (isset($_GET['action']))
+if (isset($_GET['action']))
 	{
 		$action = $_GET['action'];
 		$m->{$action}($_POST);

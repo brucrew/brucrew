@@ -33,13 +33,101 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+    $("#users").blur(function(){
+        checkValue();
+    });
+});
+</script>
   <script>
   $(function() {
     $('.datepick').each(function(){
     $(this).datepicker();
 });
   });
-  </script>
+</script>
+
+<script>
+function showUser(str) {
+var response;
+str = document.getElementById('users').value;
+var dataList = document.getElementById('client_list');
+    if (str == "") {
+        document.getElementById("client_list").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4) {
+		response = xmlhttp.responseText;
+                //document.getElementById("client_list").innerHTML = response;
+		var jsonOptions = JSON.parse(response);
+		var name = "";
+		var number = "";
+		//clear datalist
+		var parent = document.getElementById("client_list");
+        	var childArray = parent.children;
+        	var cL = childArray.length;
+        	while(cL > 0)
+		{
+            		cL--;
+            		parent.removeChild(childArray[cL]);
+        	}
+		//end of clear datalist
+		for (index = 0; index < jsonOptions.length; ++index)
+		{
+			name = jsonOptions[index].Name;
+			number = jsonOptions[index].ID;
+			var numberstring = number.toString();
+			//document.write(number);
+			//document.write(name);
+			var option = document.createElement('option');
+			option.value = name;
+			option.id = number;
+			dataList.appendChild(option);
+		}
+		
+		
+            }
+        }
+        xmlhttp.open("GET","client_list.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+
+function checkValue()
+	{
+        var x = $('#users').val();
+        var z = $('#client_list');
+        var val = $(z).find('option[value="' + x + '"]');
+        var endval = val.attr('id');
+	var x = Math.floor(endval);
+	if(typeof endval !== "undefined")
+	{
+ 		document.getElementById("clientID").value = endval;
+		//alert(document.getElementById("clientID").value);
+		document.getElementById("askaboutclient").innerHTML = "";
+	}
+	else
+	{ 
+        	document.getElementById("clientID").value = "";
+		document.getElementById("askaboutclient").innerHTML = "<strong><font color='red'>CLIENT NOT FOUND </font color></strong><input type='button' value='Add Client?' onclick='addClient()'><br>";
+	}
+        }
+
+function addClient()
+{
+	document.getElementById("newclient").innerHTML = '<input type="hidden" name="triggernewclient" id="triggernewclient" value="1"><h2>Client Information</h2><br><div class="input-group"><b>First Name: </b><input type="text" name="FirstName"></div><br><div class="input-group"><b>Last Name: </b><input type="text" name="LastName"></div><br><div class="input-group"><b>Email Address: </b><input type="text" name="Email"></div><br><div class="input-group"><b>Phone Number: </b><input type="text" name="Phone"></div><br><div class="input-group"><b>Address: </b><input type="text" name="Address"></div><br><div class="input-group"><b>City: </b><input type="text" name="City"></div><br><div class="input-group"><b>State: </b><input type="text" name="State"></div><br><div class="input-group"><b>Zip: </b><input type="text" name="Zip"></div><br><div class="input-group"><b>Referred By: </b><input type="text" name="Source"></div><br><h2>Project Information</h2>';
+}
+
+</script>
 
   </head>
 
@@ -81,7 +169,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="clients.php">All Clients</a></li>
-            <li><a href="#">My Regular Clients</a></li>
+            <li><a href="regular_clients.php">My Regular Clients</a></li>
 	    <li><a href="addclient.php">Add New Client</a></li>
           </ul>
         </li>
