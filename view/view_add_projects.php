@@ -32,11 +32,11 @@ class view_page {
 	<br>
 	<div class="input-group">
 		<strong>Date received (YYYY-MM-DD):</strong>
-		<input type="text" class="form-control" name="DateReceived" placeholder="YYYY-MM-DD">
+		<input type="text" class="form-control datepick" name="DateReceived" placeholder="YYYY-MM-DD">
 	</div>
 	<br>
 	<div class="input-group">
-	<input type="submit" class="form-control" value="Add new project">
+	<input type="submit" class="form-control datepick" value="Add new project">
 	</div>
 	</form>
 	<div class="input-group">

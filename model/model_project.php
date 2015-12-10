@@ -70,8 +70,16 @@ class model_page {
 	{
 	if (isset($information['OrderID']) && isset($information['EmployeeID']) && isset($information['CompleteDate']) && $information['CompleteDate'] != "")
 	{
-		print_r($information);
+		//print_r($information);
 		//complete order via 'OrderID', 'EmployeeID', 'CompleteDate'
+		$q = $this->db->prepare( "UPDATE Orders SET IsComplete = '1', CompleteDate = :Date, CompletedBy = :EmployeeID WHERE ID = :OrderID" );
+		$newDate = date("Y-m-d", strtotime($information['CompleteDate']));
+		$q->bindParam( ':Date', $newDate );
+		$q->bindParam( ':OrderID', $information['OrderID'] );
+		$q->bindParam( ':EmployeeID', $information['EmployeeID'] );
+		
+		$q->execute(); //Trap error here. //
+		echo "<meta http-equiv=Refresh content=0;url=project.php?id={$_GET['id']}>";
 	}
 	else
 	{
@@ -83,8 +91,15 @@ class model_page {
 	{
 	if (isset($information['OrderID']) && isset($information['EmployeeID']))
 	{
-		print_r($information);
+		//print_r($information);
 		//assign worker via 'OrderID' and 'EmployeeID'
+		$q = $this->db->prepare( "INSERT INTO Assignments (OrderID, EmployeeID) VALUES (:OrderID, :EmployeeID)" );
+
+		$q->bindParam( ':EmployeeID', $information['EmployeeID'] );
+		$q->bindParam( ':OrderID', $information['OrderID'] );
+		
+		$q->execute(); //Trap error here. //
+		echo "<meta http-equiv=Refresh content=0;url=project.php?id={$_GET['id']}>";
 	}
 	else
 	{
@@ -96,8 +111,20 @@ class model_page {
 	{
 	if ($information['EmployeeID'] != "" && $information['Date'] != "" && $information['Description'] != "" && $information['TimeIn'] != "" && $information['TimeOut'] != "" && $information['Hours'] != "")
 	{
-		print_r($information);
+		//print_r($information);
 		//add hours via 'EmployeeID', 'Date', 'Description', 'TimeIn', 'TimeOut', 'Hours'
+		$q = $this->db->prepare( "INSERT INTO Hours (Date, EmployeeID, OrderID, TimeIn, TimeOut, Hours, Note) VALUES (:Date, :EmployeeID, :OrderID, :TimeIn, :TimeOut, :Hours, :Note)" );
+		$newDate = date("Y-m-d", strtotime($information['Date']));
+		$q->bindParam( ':Date', $newDate );
+		$q->bindParam( ':EmployeeID', $information['EmployeeID'] );
+		$q->bindParam( ':OrderID', $_GET['id'] );
+		$q->bindParam( ':TimeIn', $information['TimeIn'] );
+		$q->bindParam( ':TimeOut', $information['TimeOut'] );
+		$q->bindParam( ':Hours', $information['Hours'] );
+		$q->bindParam( ':Note', $information['Description'] );
+		
+		$q->execute(); //Trap error here. //
+		echo "<meta http-equiv=Refresh content=0;url=project.php?id={$_GET['id']}>";
 	}
 	else
 	{
@@ -109,8 +136,18 @@ class model_page {
 	{
 	if ($information['EmployeeID'] != "" && $information['PaymentDate'] != "" && $information['PaymentAmount'] != "" && $information['PaymentType'] != "")
 	{
-		print_r($information);
+		//print_r($information);
 		//add payments via 'EmployeeID', 'PaymentDate', 'PaymentAmount', 'PaymentType', 'Note'
+		$q = $this->db->prepare( "INSERT INTO PaymentsReceived (Date, EmployeeID, OrderID, Amount, Type) VALUES (:Date, :EmployeeID, :OrderID, :Amount, :Type)" );
+		$newDate = date("Y-m-d", strtotime($information['PaymentDate']));
+		$q->bindParam( ':Date', $newDate );
+		$q->bindParam( ':EmployeeID', $information['EmployeeID'] );
+		$q->bindParam( ':OrderID', $_GET['id'] );
+		$q->bindParam( ':Amount', $information['PaymentAmount'] );
+		$q->bindParam( ':Type', $information['PaymentType'] );
+		
+		$q->execute(); //Trap error here. //
+		echo "<meta http-equiv=Refresh content=0;url=project.php?id={$_GET['id']}>";
 	}
 	else
 	{
@@ -122,8 +159,20 @@ class model_page {
 	{
 	if ($information['EmployeeID'] != "" && $information['ExpenseDate'] != "" && $information['ExpenseAmount'] != "" && $information['BruCrewCard'] != "")
 	{
-		print_r($information);
+		//print_r($information);
 		//add expenses via 'EmployeeID', 'ExpenseDate', 'ExpenseAmount', 'ExpenseDescription', 'BruCrewCard'
+		$q = $this->db->prepare( "INSERT INTO Expenses (OrderID, EmployeeID, Amount, Date, Description, BruCrewCard) VALUES (:OrderID, :EmployeeID, :Amount, :Date, :Description, :BruCrewCard)" );
+
+		$q->bindParam( ':OrderID', $_GET['id'] );
+		$q->bindParam( ':EmployeeID', $information['EmployeeID'] );
+		$q->bindParam( ':Amount', $information['ExpenseAmount'] );
+		$newDate = date("Y-m-d", strtotime($information['ExpenseDate']));
+		$q->bindParam( ':Date', $newDate );
+		$q->bindParam( ':Description', $information['ExpenseDescription'] );
+		$q->bindParam( ':BruCrewCard', $information['BruCrewCard'] );
+		
+		$q->execute(); //Trap error here. //
+		echo "<meta http-equiv=Refresh content=0;url=project.php?id={$_GET['id']}>";
 	}
 	else
 	{

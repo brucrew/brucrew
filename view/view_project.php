@@ -81,6 +81,7 @@ public function view_hours_by_project( $hours )
 	{
 		echo "<tr>";
 		$hourID = $hour['ID'];
+		$employeeID = $hour['EmployeeID'];
 		foreach($hour as $key => $value)
 		{	
 			if($key == "Paid")
@@ -104,7 +105,7 @@ public function view_hours_by_project( $hours )
 			}
 		}
 		$i++;
-		echo "<td style='vertical-align: top;'><strong><a href='hour.php?id=$hourID&action=delete'><font color='red'>Delete Hour</a></font></strong></td>";
+		echo "<td style='vertical-align: top;'><strong><a href='hour.php?id=$hourID&employeeID=$employeeID&projectID={$_GET['id']}&action=delete'><font color='red'>Delete Hour</a></font></strong></td>";
 		echo "</tr>";
 		
 	}
@@ -136,7 +137,7 @@ public function view_expenses_by_project( $expenses )
 				echo ("<td style='vertical-align: top;'><a href='expense.php?id=$expenseID'>$value</a></td>");
 			}
 		}
-		echo "<td style='vertical-align: top;'><strong><a href='expense.php?id=$expenseID&action=delete'><font color='red'>Delete Expense</a></font></strong></td>";
+		echo "<td style='vertical-align: top;'><strong><a href='expense.php?id=$expenseID&projectID={$_GET['id']}&action=delete'><font color='red'>Delete Expense</a></font></strong></td>";
 		echo "</tr>";
 		
 	}
@@ -161,7 +162,7 @@ public function view_client_payments_by_project( $payments )
 				echo ("<td style='vertical-align: top;'><a href='client_payment.php?id=$paymentID'>$value</a></td>");
 			}
 		}
-		echo "<td style='vertical-align: top;'><strong><a href='client_payment.php?id=$paymentID&action=delete'><font color='red'>Delete Payment</a></font></strong></td>";
+		echo "<td style='vertical-align: top;'><strong><a href='client_payment.php?id=$paymentID&projectID={$_GET['id']}&action=delete'><font color='red'>Delete Payment</a></font></strong></td>";
 		echo "</tr>";
 		
 	}

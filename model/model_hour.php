@@ -60,6 +60,23 @@ class model_page {
 		echo "<strong><font color='red'>Please Fill Out All Fields</font></strong><br><br>";
 	}
 	}
+	
+	public function delete()
+	{
+	$hourID = $_GET['id'];
+	$projectID = $_GET['projectID'];
+	$employeeID = $_GET['employeeID'];
+	if($employeeID == $_SESSION['UserID']){
+		$q = $this->db->query( "DELETE FROM Hours WHERE ID = '$hourID'" );
+		$q->execute();
+		echo "<meta http-equiv=Refresh content=0;url=project.php?id={$projectID}>";
+	}
+	else
+	{
+		echo "This hour entry does not belong to you, so you may not delete it.  You will be redirected shortly back to the project page<br><br>";
+		echo "<meta http-equiv=Refresh content=6;url=project.php?id={$projectID}>";
+	}
+	}
 }
 
 

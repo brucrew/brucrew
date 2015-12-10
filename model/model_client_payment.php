@@ -42,6 +42,15 @@ class model_page {
 		echo "<strong><font color='red'>Please Fill Out All Fields</font></strong><br><br>";
 	}
 	}
+	
+	public function delete()
+	{
+	$paymentID = $_GET['id'];
+	$projectID = $_GET['projectID'];
+	$q = $this->db->query( "DELETE FROM PaymentsReceived WHERE ID = '$paymentID'" );
+	$q->execute();
+	echo "<meta http-equiv=Refresh content=0;url=project.php?id={$projectID}>";
+	}
 }
 
 
